@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,14 +13,7 @@ import java.util.Random;
 
 public class DataGenerator {
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class UserInfo {
-        private String city;
-        private String name;
-        private String phone;
-    }
+    private static final Faker faker = new Faker(new Locale("ru"));
 
     private DataGenerator() {
     }
@@ -51,5 +45,15 @@ public class DataGenerator {
         //соединяем только имя и отчество
         String nameUser = words[0] + " " + words[1];
         return nameUser;
+    }
+
+   // @Data
+   // @AllArgsConstructor
+  //  @NoArgsConstructor
+    @Value
+    public class UserInfo {
+        private String city;
+        private String name;
+        private String phone;
     }
 }
